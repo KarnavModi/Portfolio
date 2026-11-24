@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Karnav Modi – Software Engineer, Satellite Data & AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#0a1228;--ink:#eaf0ff;--mut:#a3b0d0;--glass:rgba(255,255,255,.06);--line:rgba(255,255,255,.14);--cy:#3dd6f5;--sa:#ffa94d;--vi:#9a8cff;--pt:#3dd6f5;--hl:rgba(255,169,77,.22);color-scheme:dark}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#eef3ff;--ink:#0b1530;--mut:#43507a;--glass:rgba(255,255,255,.7);--line:rgba(11,21,48,.14);--cy:#0a7fa6;--sa:#b85c00;--vi:#5a49d6;--pt:#1c5fd1;--hl:rgba(255,169,77,.4);color-scheme:light}}
+:root[data-theme="dark"]{--bg:#0a1228}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+*{box-sizing:inherit}
+body{margin:0;background:radial-gradient(900px 520px at 85% -5%,rgba(154,140,255,.22),transparent 62%),radial-gradient(800px 500px at -10% 45%,rgba(61,214,245,.14),transparent 62%),radial-gradient(1100px 420px at 50% 112%,rgba(255,169,77,.16),transparent 65%),var(--bg);background-attachment:fixed;color:var(--ink);font:400 17px/1.65 Figtree,system-ui,sans-serif;overflow-x:hidden}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main,nav,footer{position:relative;z-index:1}
+h1,h2,h3{font-family:Sora,sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+section{padding:84px 0 30px}
+h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
+.sub{color:var(--mut);max-width:60ch;margin:0 0 30px}
+mark{background:linear-gradient(transparent 58%,var(--hl) 58%);color:inherit;font-weight:600;padding:0 2px;border-radius:3px}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:26px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+nav{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:4px;padding:6px;border-radius:999px;max-width:94vw;overflow-x:auto;scrollbar-width:none}
+nav a{padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;color:var(--mut);transition:.25s;white-space:nowrap}
+nav a:hover,nav a.on{background:var(--cy);color:#04101f}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--cy),var(--vi),var(--sa));z-index:30}
+.hero{min-height:100vh;display:flex;align-items:center;padding:110px 0 40px}
+.hero .in{max-width:620px}
+.pill{display:inline-flex;gap:8px;align-items:center;padding:8px 16px;border-radius:999px;font-size:14px;font-weight:600}
+.dot{width:9px;height:9px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 #4ade80;animation:pu 2s infinite}
+@keyframes pu{70%{box-shadow:0 0 0 10px transparent}}
+h1{font-size:clamp(46px,8vw,86px);margin:18px 0 10px;letter-spacing:-.03em;font-weight:800}
+h1 span{background:linear-gradient(100deg,var(--cy),var(--vi) 55%,var(--sa));-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200%;animation:sh 6s linear infinite}
+@keyframes sh{to{background-position:200% 0}}
+.role{font:700 clamp(18px,2.4vw,24px) Sora;color:var(--cy);margin-bottom:14px}
+.lead{font-size:18px;color:var(--mut)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0}
+.btn{display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:999px;font:700 16px Sora;text-decoration:none;border:1px solid var(--line);background:var(--glass);transition:box-shadow .3s,background .3s;will-change:transform}
+.btn.p{background:linear-gradient(120deg,var(--cy),var(--vi));color:#04101f;border:0}
+.btn:hover{box-shadow:0 10px 34px -8px var(--cy)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:560px}
+.stat{padding:16px;text-align:left}
+.stat b{display:block;font:800 28px Sora;color:var(--sa)}
+.stat small{color:var(--mut);font-size:14px;line-height:1.3;display:block}
+.hint{position:absolute;right:26px;bottom:26px;color:var(--mut);font-size:14px}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.card{padding:26px;position:relative;overflow:hidden;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out,border-color .3s;transform-style:preserve-3d}
+.card:hover{border-color:var(--cy)}
+.card::after{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0),rgba(255,255,255,.14),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover::after{opacity:1}
+.card h3{font-size:20px;margin-bottom:6px}
+.card p{margin:8px 0;color:var(--mut)}
+.card .tech{font-size:14px;color:var(--vi);font-weight:600}
+.card ul{padding-left:18px;margin:8px 0 0;color:var(--mut)}
+.card li{margin:6px 0}
+.tag{display:inline-block;font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px;background:var(--hl);color:var(--sa);margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{padding:8px 15px;border-radius:999px;border:1px solid var(--line);background:var(--glass);font-size:15px;font-weight:500;transition:.25s;cursor:default}
+.chip:hover{background:var(--cy);color:#04101f;transform:translateY(-3px) scale(1.05)}
+.tl{position:relative;padding-left:34px;display:grid;gap:18px}
+.tl::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--cy),var(--vi),var(--sa))}
+.tl .card::before{content:"";position:absolute;left:-34px;top:30px;width:18px;height:18px;border-radius:50%;background:var(--bg);border:4px solid var(--cy);transform:translateZ(0)}
+.when{float:right;font-weight:700;color:var(--sa);font-size:15px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.tab{min-height:46px;padding:0 22px;border-radius:999px;border:1px solid var(--line);background:var(--glass);color:var(--ink);font:700 15px Sora;cursor:pointer;transition:.25s}
+.tab[aria-pressed="true"]{background:var(--cy);color:#04101f;border-color:var(--cy)}
+.card.hide{display:none}
+.card.pop{animation:pop .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{opacity:0;transform:scale(.88)}}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+footer{padding:60px 0 90px;text-align:center}
+footer h2{font-size:clamp(30px,5vw,54px)}
+.burst{position:fixed;width:8px;height:8px;border-radius:50%;pointer-events:none;z-index:99}
+#cd,#cr{position:fixed;left:0;top:0;pointer-events:none;z-index:100;border-radius:50%;display:none}
+#cd{width:8px;height:8px;background:var(--sa);margin:-4px 0 0 -4px}
+#cr{width:38px;height:38px;margin:-19px 0 0 -19px;border:1.5px solid var(--cy);transition:width .25s,height .25s,margin .25s,background .25s}
+#cr.big{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(61,214,245,.12)}
+@media (pointer:fine){#cd,#cr{display:block}body,a,button{cursor:none}}
+@media (max-width:640px){.stats{grid-template-columns:1fr}.hint{display:none}.hero{padding-top:100px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+:focus-visible{outline:3px solid var(--sa);outline-offset:3px}
+.stage{position:relative;height:470px;margin:0 0 18px;overflow:hidden}
+.stage::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 125%,rgba(61,214,245,.25),transparent 60%),repeating-linear-gradient(0deg,transparent 0 39px,var(--line) 39px 40px),repeating-linear-gradient(90deg,transparent 0 39px,var(--line) 39px 40px);opacity:.45;pointer-events:none}
+#lab{position:relative;z-index:1;width:100%;height:100%;display:block;touch-action:pan-y}
+.tip{position:absolute;z-index:2;pointer-events:none;padding:6px 14px;border-radius:999px;background:var(--cy);color:#04101f;font:700 13px Sora;opacity:0;transition:opacity .2s;transform:translate(-50%,-150%);white-space:nowrap}
+.panel{margin-bottom:28px}
+.swath{position:fixed;left:0;right:0;top:0;height:150px;z-index:0;pointer-events:none;background:linear-gradient(transparent,rgba(61,214,245,.08),transparent);animation:sw 16s linear infinite}
+@keyframes sw{from{transform:translateY(-170px)}to{transform:translateY(100vh)}}
+@media (max-width:640px){.stage{height:600px}}
+
+:root{--vl:8,14,32}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--vl:238,243,255}}
+.veil{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle 300px at var(--px,50%) var(--py,35%),rgba(var(--vl),.15),rgba(var(--vl),.78) 100%)}
+.legend{position:fixed;z-index:15;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));padding:8px 16px;border-radius:999px;font:600 13px Figtree;color:var(--mut)}
+@media (max-width:640px){.legend{display:none}}
+.bgs{position:fixed;inset:0;z-index:0;overflow:hidden;background:radial-gradient(900px 520px at 85% -5%,rgba(154,140,255,.28),transparent 62%),radial-gradient(800px 500px at -10% 45%,rgba(61,214,245,.18),transparent 62%),radial-gradient(1100px 420px at 50% 112%,rgba(255,169,77,.2),transparent 65%),var(--bg)}
+.bgv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease;animation:kb 40s ease-in-out infinite alternate;filter:saturate(1.15) contrast(1.05)}
+.bgv.on{opacity:1}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.09)}}
+</style></head><body>
+<div id="bar"></div><div class="bgs" aria-hidden="true">
+<video class="bgv on" muted loop playsinline preload="auto" poster="assets/poster-1.jpg"><source src="assets/earth-night.mp4" type="video/mp4"></video>
+<video class="bgv" muted loop playsinline preload="none" poster="assets/poster-2.jpg"><source src="assets/orbit.mp4" type="video/mp4"></video>
+<video class="bgv" muted loop playsinline preload="none" poster="assets/poster-3.jpg"><source src="assets/aerial-farmland.mp4" type="video/mp4"></video></div><div class="veil" id="vl"></div><canvas id="gl" aria-hidden="true"></canvas><div id="cr"></div><div id="cd"></div>
+<nav class="glass" aria-label="Sections"><a href="#top" class="on">Home</a><a href="#skills">Skills</a><a href="#work">Experience</a><a href="#projects">Projects</a><a href="#edu">Education</a><a href="#contact">Contact</a></nav>
+<main id="top">
+<header class="hero"><div class="wrap"><div class="in">
+<span class="pill glass"><i class="dot"></i>Open to new roles · Ahmedabad, India</span>
+<h1>Karnav <span>Modi</span></h1>
+<div class="role">Software Engineer · Satellite Data · Applied AI</div>
+<p class="lead">M.E. in <mark>AI &amp; Data Science</mark> with <mark>3+ years</mark> building <mark>satellite data pipelines</mark>, <mark>Python REST APIs</mark> and <mark>geospatial web apps</mark>. I make small local language models reliable by pairing them with retrieval and strict validation.</p>
+<div class="cta"><a class="btn p mag" href="#projects">See my projects</a><a class="btn mag" href="mailto:karnavmodi09@gmail.com">Email me</a></div>
+<div class="stats"><div class="stat glass"><b>3+ yrs</b><small>pipelines, backend, web</small></div><div class="stat glass"><b>30→5 min</b><small>satellite frame gaps with U-Net + GAN</small></div><div class="stat glass"><b>3</b><small>enterprise apps shipped</small></div></div>
+</div></div><div class="hint">Move your pointer to scan the terrain · click objects</div></header>
+
+<section id="skills"><div class="wrap rv"><h2>What I work with</h2><p class="sub">Grouped by the kind of problem they solve.</p>
+<div class="grid g2">
+<div class="card glass"><span class="tag">AI &amp; Retrieval</span><div class="chips"><span class="chip">Ollama</span><span class="chip">Qwen</span><span class="chip">MiniLM</span><span class="chip">ChromaDB</span><span class="chip">spaCy NER</span><span class="chip">PyTorch</span><span class="chip">scikit-learn</span><span class="chip">CNN · U-Net · GAN</span></div></div>
+<div class="card glass"><span class="tag">Geospatial &amp; Data</span><div class="chips"><span class="chip">PostGIS</span><span class="chip">Remote Sensing</span><span class="chip">NDVI</span><span class="chip">Sentinel</span><span class="chip">ResourceSat</span><span class="chip">WRF Model</span><span class="chip">pandas · NumPy · SciPy</span></div></div>
+<div class="card glass"><span class="tag">Web &amp; Backend</span><div class="chips"><span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">.NET MVC</span><span class="chip">REST APIs</span><span class="chip">Lit</span><span class="chip">Vue.js</span><span class="chip">OpenLayers</span><span class="chip">Highcharts</span><span class="chip">Tailwind</span></div></div>
+<div class="card glass"><span class="tag">Languages &amp; Infra</span><div class="chips"><span class="chip">Python</span><span class="chip">JavaScript ES6</span><span class="chip">C#</span><span class="chip">SQL</span><span class="chip">Shell</span><span class="chip">PostgreSQL</span><span class="chip">Linux</span><span class="chip">Monitoring</span></div></div>
+</div></div></section>
+
+<section id="work"><div class="wrap rv"><h2>Experience</h2><p class="sub">Most recent first.</p><div class="tl">
+<div class="card glass"><span class="when">May 2025 – Present</span><h3>Software Engineer</h3><p class="tech">SAC, ISRO (via Ethos HR Management &amp; Projects Ltd.) · Ahmedabad</p><ul><li><mark>Automated</mark> processing of datasets from <mark>multiple satellite missions</mark> (Sentinel, ResourceSat) in Python on Linux, with validation checks for complete, accurate outputs.</li><li>Maintain <mark>ML-based processing chains</mark> so structured outputs stay consistent and reliable.</li></ul></div>
+<div class="card glass"><span class="when">Jan – May 2025</span><h3>Researcher Intern</h3><p class="tech">SAC, ISRO · Ahmedabad</p><ul><li>Cleaned atmospheric datasets (pandas, NumPy, SciPy) in hierarchical and archived formats.</li><li>Built a <mark>solar radiation forecasting pipeline</mark> combining multi-source WRF outputs with ML.</li></ul></div>
+<div class="card glass"><span class="when">Jan 2022 – Aug 2023</span><h3>Jr. Software Developer</h3><p class="tech">Netsol IT Solutions Pvt. Ltd. · Surat</p><ul><li>Delivered <mark>three enterprise web apps</mark>: HRMS, Institute Management, Sugar Production Management.</li><li>Built with .NET MVC, C#, JavaScript and jQuery, with role-based access, optimized SQL and dashboards.</li></ul></div>
+</div></div></section>
+
+<section id="projects"><div class="wrap rv"><h2>Projects</h2><p class="sub">Filter by area. Tap a card to focus it.</p>
+<div class="tabs" role="group" aria-label="Filter projects"><button class="tab" aria-pressed="true" data-f="all">All</button><button class="tab" aria-pressed="false" data-f="ai">AI</button><button class="tab" aria-pressed="false" data-f="geo">Geospatial</button><button class="tab" aria-pressed="false" data-f="web">Web</button></div>
+<div class="grid g2" id="pg">
+<article class="card glass" data-c="ai geo"><span class="tag">Generative AI</span><h3>GIS Chatbot</h3><p class="tech">FastAPI · Ollama (Qwen 4B) · ChromaDB · spaCy · PostGIS</p><p>Turns <mark>plain-language requests into GIS actions</mark>. New map services plug in with <mark>no service-specific code</mark>.</p><ul><li>Hybrid retrieval (MiniLM, ChromaDB, lexical, RRF) feeds <mark>one schema-constrained call</mark> to a small local model.</li><li>Locations and dates are resolved <mark>deterministically</mark>; JSON Schema validation limits unsupported output.</li></ul></article>
+<article class="card glass" data-c="web geo"><span class="tag">Architecture</span><h3>Unified Visualization &amp; Analysis Framework</h3><p class="tech">ES6 · Lit · OpenLayers · Tailwind · Highcharts</p><p>A <mark>JSON-driven micro-frontend</mark> that hosts several geospatial apps and shares their tools as plugins.</p><ul><li>Custom runtime: async module loader, layout manager, <mark>pub/sub event bus</mark>.</li><li>Layer ordering, timeline sync, headless tools, SPA routing and telemetry, built for fault tolerance.</li></ul></article>
+<article class="card glass" data-c="ai geo"><span class="tag">Deep Learning</span><h3>Temporal Interpolation of Satellite Imagery</h3><p class="tech">Python · U-Net · GANs · Linux</p><p>Rebuilds missing frames, cutting gaps from <mark>30 to 5 minutes</mark> for smoother geospatial and atmospheric analysis.</p></article>
+<article class="card glass" data-c="geo"><span class="tag">Remote Sensing</span><h3>Vegetation &amp; Agriculture via NDVI</h3><p class="tech">Python · Satellite imagery</p><p>Scores <mark>vegetation health</mark> in any selected area from long NDVI series, then checks links with <mark>nearby water resources</mark>.</p></article>
+<article class="card glass" data-c="web"><span class="tag">Monitoring</span><h3>Data Processing Monitor</h3><p class="tech">Flask · Vue.js · REST</p><p><mark>Real-time dashboard</mark> for pipeline status, product-wise flows, throughput and service health, with quality checks.</p></article>
+<article class="card glass" data-c="ai"><span class="tag">M.E. Work</span><h3>SQLi Classification &amp; Solar PV Forecasting</h3><p class="tech">Python · scikit-learn · pandas</p><p>Thesis: a <mark>multiclass ML classifier</mark> for SQL injection patterns. Project: cleaned multi-source weather data and engineered features for <mark>solar PV forecasting</mark>.</p></article>
+</div></div></section>
+
+<section id="edu"><div class="wrap rv"><h2>Education</h2><p class="sub">&nbsp;</p><div class="grid g2">
+<div class="card glass"><span class="when">2023 – 2025</span><h3>M.E., AI &amp; Data Science</h3><p>G.S.E.T., Gujarat Technological University</p><p><mark>GPA 8.89 / 10</mark></p></div>
+<div class="card glass"><span class="when">2018 – 2022</span><h3>B.E., Computer Engineering</h3><p>S.V.I.T.</p><p><mark>GPA 8.37 / 10</mark></p></div></div></div></section>
+</main>
+<footer id="contact"><div class="wrap rv"><h2>Have a data or AI problem to solve?</h2><p class="sub" style="margin:10px auto 26px">Email is the fastest way to reach me.</p>
+<div class="cta" style="justify-content:center"><a class="btn p mag" href="mailto:karnavmodi09@gmail.com">karnavmodi09@gmail.com</a><a class="btn mag" href="tel:+918511484680">+91 85114 84680</a></div><p class="sub" style="margin:34px auto 0;font-size:14px">Background footage: NASA and ESA imagery.</p></div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches,fine=matchMedia('(pointer:fine)').matches;
+let px=0,py=0,sy=0;
+const cs=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+/* cursor + click bursts */
+const cd=$('#cd'),cr=$('#cr');let cx=innerWidth/2,cy=innerHeight/2,rx=cx,ry=cy;
+addEventListener('pointermove',e=>{cx=e.clientX;cy=e.clientY;px=e.clientX/innerWidth*2-1;py=e.clientY/innerHeight*2-1;cd.style.transform=`translate(${cx}px,${cy}px)`});
+document.addEventListener('pointerover',e=>cr.classList.toggle('big',!!e.target.closest('a,button,.chip,.card')));
+addEventListener('pointerdown',e=>{pulse=1;if(RM)return;const cols=[cs('--cy'),cs('--sa'),cs('--vi')];
+for(let i=0;i<14;i++){const d=document.createElement('i');d.className='burst';d.style.cssText=`left:${e.clientX}px;top:${e.clientY}px;background:${cols[i%3]}`;document.body.appendChild(d);
+const a=i/14*6.28,r=40+Math.random()*50;d.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:`translate(${Math.cos(a)*r}px,${Math.sin(a)*r}px) scale(0)`,opacity:0}],{duration:650,easing:'cubic-bezier(.2,.8,.3,1)'}).onfinish=()=>d.remove()}});
+/* magnetic buttons */
+if(fine)$$('.mag').forEach(b=>{b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.22}px,${(e.clientY-r.top-r.height/2)*.35}px)`});b.addEventListener('pointerleave',()=>b.style.transform='')});
+/* tilt + glare */
+if(fine&&!RM)$$('.card').forEach(c=>{c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.setProperty('--ry',(x-.5)*9+'deg');c.style.setProperty('--rx',(.5-y)*9+'deg');c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%')});c.addEventListener('pointerleave',()=>{c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')})});
+/* project filter */
+$$('.tab').forEach(t=>t.onclick=()=>{$$('.tab').forEach(x=>x.setAttribute('aria-pressed',x===t));const f=t.dataset.f;$$('#pg .card').forEach(c=>{const s=f==='all'||c.dataset.c.includes(f);c.classList.toggle('hide',!s);if(s){c.classList.remove('pop');void c.offsetWidth;c.classList.add('pop')}})});
+/* reveal + nav + progress */
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.08});$$('.rv').forEach(e=>io.observe(e));
+const links=$$('nav a'),secs=['top','skills','work','projects','edu','contact'].map(i=>document.getElementById(i));
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('on',l.hash==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});secs.forEach(s=>so.observe(s));
+const vids=$$('.bgv'),pickV=id=>{const i=id==='top'?0:(id==='skills'||id==='work')?1:2;vids.forEach((v,j)=>{v.classList.toggle('on',j===i);if(RM)return;if(j===i)v.play().catch(()=>{});else setTimeout(()=>{if(!v.classList.contains('on'))v.pause()},1800)})};
+const vo=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&pickV(e.target.id)),{rootMargin:'-45% 0px -50% 0px'});secs.forEach(s=>vo.observe(s));pickV('top');
+addEventListener('scroll',()=>{sy=scrollY;$('#bar').style.width=sy/(document.body.scrollHeight-innerHeight)*100+'%'},{passive:true});
+const VL=$('#vl');
+/* 3D globe */
+let pulse=0;
+if(!window.THREE)return;
+const cv=$('#gl'),R=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true});R.setPixelRatio(Math.min(devicePixelRatio,2));
+const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(45,1,.1,100);C.position.z=7;
+const G=new THREE.Group();S.add(G);const col=new THREE.Color(cs('--pt'));
+const N=2600,pos=new Float32Array(N*3);
+for(let i=0;i<N;i++){const y=1-i/(N-1)*2,r=Math.sqrt(1-y*y),t=i*2.39996;pos.set([Math.cos(t)*r*2,y*2,Math.sin(t)*r*2],i*3)}
+const pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
+const pts=new THREE.Points(pg,new THREE.PointsMaterial({color:col,size:.035,transparent:true,opacity:.85}));G.add(pts);
+G.add(new THREE.Mesh(new THREE.SphereGeometry(1.96,48,32),new THREE.MeshBasicMaterial({color:0x0b1a3a,transparent:true,opacity:.55})));
+const orbs=[],sats=[];
+[[2.7,.5,0,0xffa94d],[3.1,-.9,1,0x9a8cff],[3.5,1.2,2,0x3dd6f5]].forEach(([rad,tilt,ph,c])=>{
+const o=new THREE.Group();o.rotation.set(tilt,ph,0);const ring=new THREE.Mesh(new THREE.TorusGeometry(rad,.006,8,160),new THREE.MeshBasicMaterial({color:c,transparent:true,opacity:.5}));ring.rotation.x=Math.PI/2;o.add(ring);
+const s=new THREE.Mesh(new THREE.OctahedronGeometry(.11),new THREE.MeshBasicMaterial({color:c}));o.add(s);sats.push([s,rad,ph*2]);G.add(o);orbs.push(o)});
+/* Ahmedabad marker (23.0N, 72.6E) */
+const la=23*Math.PI/180,lo=72.6*Math.PI/180,mk=new THREE.Mesh(new THREE.SphereGeometry(.06,16,16),new THREE.MeshBasicMaterial({color:0xffa94d}));
+mk.position.set(2*Math.cos(la)*Math.sin(lo),2*Math.sin(la),2*Math.cos(la)*Math.cos(lo));G.add(mk);
+const halo=new THREE.Mesh(new THREE.RingGeometry(.09,.11,32),new THREE.MeshBasicMaterial({color:0xffa94d,transparent:true,side:2}));halo.position.copy(mk.position);halo.lookAt(mk.position.clone().multiplyScalar(2));G.add(halo);
+/* scattered 3D decorations, each with its own motion */
+S.add(new THREE.AmbientLight(0xffffff,.8));const dl=new THREE.PointLight(0xffffff,1.4);dl.position.set(3,5,8);S.add(dl);
+const MS=(c,o=1)=>new THREE.MeshStandardMaterial({color:c,metalness:.45,roughness:.35,emissive:c,emissiveIntensity:.25,transparent:o<1,opacity:o});
+const mesh=(g,m,p=[0,0,0])=>{const x=new THREE.Mesh(g,m);x.position.set(...p);return x};
+const D=[],V=new THREE.Vector3();
+function deco(g,sel,side,fy,sc,fn){const w=new THREE.Group();w.add(g);S.add(w);D.push({w,sel,side,fy,sc,fn,k:0,tt:0,s:1,sx:9,sy:9})}
+/* satellite: elliptical orbit, banking, flapping panels */
+const sat=new THREE.Group(),pan=[-1,1].map(q=>{const p=mesh(new THREE.BoxGeometry(1.7,.05,.8),MS(0x2a6df4),[q*1.35,0,0]);sat.add(p);return p});
+sat.add(mesh(new THREE.BoxGeometry(.9,.9,1.2),MS(0xffa94d)));const ds=mesh(new THREE.ConeGeometry(.35,.3,24,1,true),MS(0xeaf0ff),[0,0,.8]);ds.rotation.x=Math.PI/2;sat.add(ds);
+deco(sat,'#work',-1,.2,.55,(d,t)=>{const a=t*.7;sat.position.set(Math.cos(a)*1.1,Math.sin(a*1.3)*.6,Math.sin(a)*.6);sat.rotation.set(.3,-a,Math.cos(a)*.4);pan.forEach((p,i)=>p.rotation.x=Math.sin(t*2+i)*.2)});
+/* neural net: signal wave pulses through layers, gentle sway */
+const nt=new THREE.Group(),nodes=[],Ls=[3,4,4,2],pp=[];
+Ls.forEach((n,i)=>{pp.push([]);for(let j=0;j<n;j++){const p=new THREE.Vector3((i-1.5)*.8,(j-(n-1)/2)*.5,0);pp[i].push(p);const m=mesh(new THREE.SphereGeometry(.12,16,12),MS(i%2?0x9a8cff:0x3dd6f5),p.toArray());m.userData.l=i;nt.add(m);nodes.push(m)}});
+const lv=[];for(let i=0;i<3;i++)pp[i].forEach(a=>pp[i+1].forEach(b=>lv.push(a.x,a.y,a.z,b.x,b.y,b.z)));
+const lgm=new THREE.BufferGeometry();lgm.setAttribute('position',new THREE.Float32BufferAttribute(lv,3));nt.add(new THREE.LineSegments(lgm,new THREE.LineBasicMaterial({color:0x9fb4ff,transparent:true,opacity:.5})));
+deco(nt,'#skills',1,.12,.9,(d,t)=>{nodes.forEach(m=>m.scale.setScalar(1+.8*Math.max(0,Math.sin(t*3-m.userData.l*1.2))));nt.rotation.y=Math.sin(t*.5)*.5});
+/* GIS layers: breathe apart and collapse */
+const gis=new THREE.Group(),ly=[0x4ade80,0x3dd6f5,0x9a8cff,0xffa94d].map(c=>{const m=mesh(new THREE.BoxGeometry(2,.05,1.4),MS(c,.85));gis.add(m);return m});
+deco(gis,'#skills',-1,.72,.75,(d,t)=>{const sp=(Math.sin(t*.9)*.5+.5)*.6;ly.forEach((m,i)=>{m.position.y=(i-1.5)*(.3+sp);m.rotation.y=i*.3*sp});gis.rotation.set(.5,Math.sin(t*.4)*.6,0)});
+/* database: disks shuffle sideways like writes */
+const db=new THREE.Group(),cyl=[0,1,2].map(i=>{const c=new THREE.Group();c.add(mesh(new THREE.CylinderGeometry(.8,.8,.4,40),MS(0x3dd6f5)));const r=mesh(new THREE.TorusGeometry(.8,.025,8,48),MS(0xeaf0ff),[0,.2,0]);r.rotation.x=Math.PI/2;c.add(r);c.position.y=(i-1)*.55;db.add(c);return c});
+deco(db,'#work',1,.75,.8,(d,t)=>{cyl.forEach((c,i)=>c.position.x=Math.sin(t*1.5+i*2.1)*.4);db.rotation.set(.35,.6,Math.sin(t)*.08)});
+/* API core: pulsing wireframe, counter-spinning core, 3D-orbiting cubes */
+const api=new THREE.Group(),ico=mesh(new THREE.IcosahedronGeometry(1,1),new THREE.MeshBasicMaterial({color:0x3dd6f5,wireframe:true})),oc=mesh(new THREE.OctahedronGeometry(.4),MS(0xffa94d)),cb=[0,1,2,3].map(()=>{const s=mesh(new THREE.BoxGeometry(.2,.2,.2),MS(0x9a8cff));api.add(s);return s});api.add(ico,oc);
+deco(api,'#projects',1,.15,.75,(d,t)=>{ico.rotation.set(t*.4,0,t*.25);ico.scale.setScalar(1+.12*Math.sin(t*2.2));oc.rotation.y=-t*1.6;cb.forEach((s,i)=>{const a=t*(1+i*.3)+i*1.57,r=1.2+i*.12;s.position.set(Math.cos(a)*r,Math.sin(a*.7)*.6,Math.sin(a)*r);s.rotation.set(a,a,0)})});
+/* deep learning knot: draws itself, then un-draws */
+const kg=new THREE.TorusKnotGeometry(.7,.2,120,14),kn=mesh(kg,MS(0xffa94d)),tot=kg.index.count;
+deco(kn,'#projects',-1,.78,.85,(d,t)=>{kg.setDrawRange(0,Math.floor((Math.sin(t*.6)*.45+.55)*tot/3)*3);kn.rotation.set(Math.sin(t*.5)*.7,.5,Math.cos(t*.4)*.3)});
+function dec(t,dt){const wide=innerWidth>820;D.forEach(d=>{const r=document.querySelector(d.sel).getBoundingClientRect(),X=d.side*(wide?.86:.95),Y=1-2*(r.top+r.height*d.fy)/innerHeight;d.sx=X;d.sy=Y;d.w.visible=Math.abs(Y)<1.4;if(!d.w.visible)return;
+V.set(X,Y,.5).unproject(C).sub(C.position).normalize();d.w.position.copy(C.position).addScaledVector(V,-C.position.z/V.z);
+const near=Math.hypot(px-X,-py-Y)<.16;d.k*=.95;d.tt+=dt*(1+d.k*4);d.s+=((near?1.25:1)+d.k*.3-d.s)*.1;d.w.scale.setScalar(d.sc*(wide?1:.6)*d.s);d.fn(d,d.tt)})}
+addEventListener('pointerdown',e=>{const x=e.clientX/innerWidth*2-1,y=1-e.clientY/innerHeight*2;D.forEach(d=>{if(Math.hypot(x-d.sx,y-d.sy)<.16)d.k=1})});
+function rs(){const w=innerWidth,h=innerHeight;R.setSize(w,h,false);C.aspect=w/h;C.updateProjectionMatrix()}rs();addEventListener('resize',rs);
+let rotY=-1.2,k=0;const clk=new THREE.Clock();
+(function loop(){requestAnimationFrame(loop);const dt=clk.getDelta(),t=clk.elapsedTime,wide=innerWidth>820;
+rx+=(cx-rx)*.16;ry+=(cy-ry)*.16;VL.style.setProperty('--px',rx+'px');VL.style.setProperty('--py',ry+'px');cr.style.transform=`translate(${rx}px,${ry}px)`;
+k=Math.min(sy/(innerHeight*.9),1);
+const kc=1-Math.min(k*1.6,1),tx=(wide?2.3:0)*kc,ty=(wide?0:1.6)*kc,sc=(wide?1:.7)*(1-k*.45);
+G.position.x+=(tx-G.position.x)*.06;G.position.y+=(ty-G.position.y)*.06;
+G.scale.setScalar(G.scale.x+(sc-G.scale.x)*.06);
+rotY+=dt*(RM?0:.12+k*.5);G.rotation.y=rotY+px*.5;G.rotation.x+=((py*.35)-G.rotation.x)*.06;
+pts.material.opacity=.85-k*.5;pulse*=.92;pts.material.size=.035+pulse*.05;
+sats.forEach(([s,r,p],i)=>{const a=t*(.5-i*.12)+p;s.position.set(Math.cos(a)*r,0,Math.sin(a)*r);s.rotation.y=t*2});
+dec(t,RM?0:dt);
+halo.scale.setScalar(1+(t%1.6)*1.4);halo.material.opacity=1-(t%1.6)/1.6;
+R.render(S,C)})();
+
+})();
+</script></body></html>
