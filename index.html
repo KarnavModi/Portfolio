@@ -5,7 +5,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
---bg:#0a1228;--ink:#eaf0ff;--mut:#a3b0d0;--glass:rgba(255,255,255,.06);--line:rgba(255,255,255,.14);--cy:#3dd6f5;--sa:#ffa94d;--vi:#9a8cff;--pt:#3dd6f5;--hl:rgba(255,169,77,.22);color-scheme:dark}
+--bg:#0a1228;--ink:#eaf0ff;--mut:#a3b0d0;--glass:rgba(8,14,32,.4);--line:rgba(255,255,255,.14);--cy:#3dd6f5;--sa:#ffa94d;--vi:#9a8cff;--pt:#3dd6f5;--hl:rgba(255,169,77,.22);color-scheme:dark}
 @media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#eef3ff;--ink:#0b1530;--mut:#43507a;--glass:rgba(255,255,255,.7);--line:rgba(11,21,48,.14);--cy:#0a7fa6;--sa:#b85c00;--vi:#5a49d6;--pt:#1c5fd1;--hl:rgba(255,169,77,.4);color-scheme:light}}
 :root[data-theme="dark"]{--bg:#0a1228}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
@@ -93,18 +93,22 @@ footer h2{font-size:clamp(30px,5vw,54px)}
 
 :root{--vl:8,14,32}
 @media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--vl:238,243,255}}
-.veil{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle 300px at var(--px,50%) var(--py,35%),rgba(var(--vl),.15),rgba(var(--vl),.78) 100%)}
+.veil{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle 300px at var(--px,50%) var(--py,35%),rgba(var(--vl),0),rgba(var(--vl),.5) 100%)}
 .legend{position:fixed;z-index:15;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));padding:8px 16px;border-radius:999px;font:600 13px Figtree;color:var(--mut)}
 @media (max-width:640px){.legend{display:none}}
 .bgs{position:fixed;inset:0;z-index:0;overflow:hidden;background:radial-gradient(900px 520px at 85% -5%,rgba(154,140,255,.28),transparent 62%),radial-gradient(800px 500px at -10% 45%,rgba(61,214,245,.18),transparent 62%),radial-gradient(1100px 420px at 50% 112%,rgba(255,169,77,.2),transparent 65%),var(--bg)}
-.bgv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease;animation:kb 40s ease-in-out infinite alternate;filter:saturate(1.15) contrast(1.05)}
+.bgv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease;animation:kb 40s ease-in-out infinite alternate;filter:brightness(1.4) saturate(1.2) contrast(1.05)}
 .bgv.on{opacity:1}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.09)}}
+.ai{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aif{position:absolute;margin:0;padding:10px 12px 8px;border:1px solid var(--line);border-radius:18px;background:rgba(8,14,32,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:.85;transform:translate3d(calc(var(--mx,0)*var(--d)*-30px),calc(var(--my,0)*var(--d)*-22px + var(--sy,0)*var(--d)*-.1px),0);animation:fl 9s ease-in-out infinite alternate;transition:transform .4s ease-out}
+.aif svg{display:block;width:100%;height:auto}
+.aif figcaption{font:600 11px Sora;color:#a3b0d0;margin-top:6px;letter-spacing:.04em;text-transform:uppercase}
+@keyframes fl{from{translate:0 -10px}to{translate:0 12px}}
+@media (prefers-color-scheme:dark){.lead,.sub,h1,.role{text-shadow:0 2px 14px rgba(0,0,0,.5)}}
+@media (max-width:700px){.aif:nth-child(n+4){display:none}.aif{opacity:.55;scale:.8}}
 </style></head><body>
-<div id="bar"></div><div class="bgs" aria-hidden="true">
-<video class="bgv on" muted loop playsinline preload="auto" poster="assets/poster-1.jpg"><source src="assets/earth-night.mp4" type="video/mp4"></video>
-<video class="bgv" muted loop playsinline preload="none" poster="assets/poster-2.jpg"><source src="assets/orbit.mp4" type="video/mp4"></video>
-<video class="bgv" muted loop playsinline preload="none" poster="assets/poster-3.jpg"><source src="assets/aerial-farmland.mp4" type="video/mp4"></video></div><div class="veil" id="vl"></div><canvas id="gl" aria-hidden="true"></canvas><div id="cr"></div><div id="cd"></div>
+<div id="bar"></div><div class="bgs" aria-hidden="true"><video class="bgv" id="bgv" autoplay muted loop playsinline preload="auto"><source src="assets/earth-night.mp4" type="video/mp4"></video></div><div class="veil" id="vl"></div><canvas id="gl" aria-hidden="true"></canvas><div id="cr"></div><div id="cd"></div>
 <nav class="glass" aria-label="Sections"><a href="#top" class="on">Home</a><a href="#skills">Skills</a><a href="#work">Experience</a><a href="#projects">Projects</a><a href="#edu">Education</a><a href="#contact">Contact</a></nav>
 <main id="top">
 <header class="hero"><div class="wrap"><div class="in">
@@ -170,12 +174,30 @@ if(fine&&!RM)$$('.card').forEach(c=>{c.addEventListener('pointermove',e=>{const 
 $$('.tab').forEach(t=>t.onclick=()=>{$$('.tab').forEach(x=>x.setAttribute('aria-pressed',x===t));const f=t.dataset.f;$$('#pg .card').forEach(c=>{const s=f==='all'||c.dataset.c.includes(f);c.classList.toggle('hide',!s);if(s){c.classList.remove('pop');void c.offsetWidth;c.classList.add('pop')}})});
 /* reveal + nav + progress */
 const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.08});$$('.rv').forEach(e=>io.observe(e));
-const links=$$('nav a'),secs=['top','skills','work','projects','edu','contact'].map(i=>document.getElementById(i));
-const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('on',l.hash==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});secs.forEach(s=>so.observe(s));
-const vids=$$('.bgv'),pickV=id=>{const i=id==='top'?0:(id==='skills'||id==='work')?1:2;vids.forEach((v,j)=>{v.classList.toggle('on',j===i);if(RM)return;if(j===i)v.play().catch(()=>{});else setTimeout(()=>{if(!v.classList.contains('on'))v.pause()},1800)})};
-const vo=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&pickV(e.target.id)),{rootMargin:'-45% 0px -50% 0px'});secs.forEach(s=>vo.observe(s));pickV('top');
+const links=$$('nav a'),secs=['skills','work','projects','edu','contact'].map(i=>document.getElementById(i));
+function setNav(){let id='top';secs.forEach(e=>{if(e.getBoundingClientRect().top<innerHeight*.4)id=e.id});links.forEach(l=>l.classList.toggle('on',l.hash==='#'+id))}
+addEventListener('scroll',setNav,{passive:true});addEventListener('resize',setNav);setNav();
+const bv=$('#bgv'),pl=()=>{if(!RM)bv.play().catch(()=>{})};
+['loadeddata','playing'].forEach(ev=>bv.addEventListener(ev,()=>bv.classList.add('on')));
+bv.addEventListener('canplay',pl);bv.addEventListener('pause',()=>{if(!document.hidden)pl()});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)pl()});if(RM)bv.removeAttribute('autoplay');
 addEventListener('scroll',()=>{sy=scrollY;$('#bar').style.width=sy/(document.body.scrollHeight-innerHeight)*100+'%'},{passive:true});
 const VL=$('#vl');
+const AI=(()=>{const rnd=i=>{const q=Math.sin(i*91.7)*1e4;return q-Math.floor(q)},sv=(w,h,b)=>`<svg viewBox="0 0 ${w} ${h}">${b}</svg>`;
+let at='',un='',ev='',cn='',p1='',p2='';
+for(let y=0;y<10;y++)for(let x=0;x<10;x++)at+=`<rect x="${x*18}" y="${y*18}" width="16" height="16" rx="3" fill="#3dd6f5" opacity="${Math.min(1,Math.exp(-Math.abs(x-y)/2.2)*.8+rnd(x*10+y)*.35).toFixed(2)}"/>`;
+[70,52,36,22].forEach((h,i)=>{un+=`<rect x="${i*30}" y="${60-h/2}" width="16" height="${h}" rx="3" fill="#9a8cff"/><rect x="${210-i*30}" y="${60-h/2}" width="16" height="${h}" rx="3" fill="#ffa94d"/>`;if(i<3)un+=`<path d="M${i*30+16} ${56-h/2}H${210-i*30}" stroke="#3dd6f5" stroke-dasharray="3 3" fill="none"/>`});
+for(let i=0;i<45;i++){p1+=`${i*5},${(100-90*Math.exp(-i/14)-rnd(i)*5).toFixed(1)} `;p2+=`${i*5},${(96-80*Math.exp(-i/12)-rnd(i+50)*8).toFixed(1)} `}
+const ls=`<path d="M0 0V104H224" stroke="#a3b0d0" fill="none" opacity=".6"/><polyline points="${p1}" stroke="#4ade80" stroke-width="2.5" fill="none"/><polyline points="${p2}" stroke="#ffa94d" stroke-width="2.5" fill="none"/>`;
+[[50,50,'#3dd6f5'],[150,40,'#9a8cff'],[110,90,'#ffa94d']].forEach(([a,b,c],k)=>{for(let i=0;i<16;i++)ev+=`<circle cx="${(a+(rnd(i+k*20)-.5)*60).toFixed(1)}" cy="${(b+(rnd(i+k*20+7)-.5)*44).toFixed(1)}" r="3.5" fill="${c}" opacity=".85"/>`});
+for(let y=0;y<6;y++)for(let x=0;x<6;x++)cn+=`<rect x="${x*14}" y="${y*14}" width="12" height="12" rx="2" fill="#3dd6f5" opacity="${(.2+rnd(x*6+y)*.6).toFixed(2)}"/>`;
+cn+=`<rect x="-2" y="-2" width="44" height="44" rx="4" fill="none" stroke="#ffa94d" stroke-width="2.5"/><path d="M92 42h20m-6-6 6 6-6 6" stroke="#a3b0d0" fill="none" stroke-width="2"/>`;
+for(let y=0;y<4;y++)for(let x=0;x<4;x++)cn+=`<rect x="${120+x*14}" y="${14+y*14}" width="12" height="12" rx="2" fill="#9a8cff" opacity="${(.25+rnd(x*4+y+60)*.65).toFixed(2)}"/>`;
+const cd=`<g font-family="monospace" font-size="11"><text y="12" fill="#9a8cff">plan = llm.plan(q, ctx)</text><text y="30" fill="#3dd6f5">validate(plan, schema)</text><text y="48" fill="#ffa94d">resolve(entities, dates)</text><text y="66" fill="#4ade80">return gis_action</text></g>`;
+const L=[['U-Net skip connections',sv(226,120,un),'left:3%;top:14%;width:230px',.9],['Self-attention map',sv(180,180,at),'right:3%;top:22%;width:170px',1.2],['Training vs validation loss',sv(224,104,ls),'left:4%;top:58%;width:220px',.7],['Embedding space',sv(200,120,ev),'right:4%;top:62%;width:200px',1],['Conv feature maps',sv(176,84,cn),'left:32%;top:82%;width:190px',.6],['Schema-constrained plan',sv(190,72,cd),'right:28%;top:6%;width:210px',.5]];
+const el=document.createElement('div');el.className='ai';el.setAttribute('aria-hidden','true');
+L.forEach(([t,b,pos,d],i)=>{const f=document.createElement('figure');f.className='aif';f.style.cssText=pos+';--d:'+d+';animation-delay:-'+i*1.7+'s';f.innerHTML=b+'<figcaption>'+t+'</figcaption>';el.appendChild(f)});
+$('#vl').after(el);return el})();
 /* 3D globe */
 let pulse=0;
 if(!window.THREE)return;
@@ -230,7 +252,7 @@ addEventListener('pointerdown',e=>{const x=e.clientX/innerWidth*2-1,y=1-e.client
 function rs(){const w=innerWidth,h=innerHeight;R.setSize(w,h,false);C.aspect=w/h;C.updateProjectionMatrix()}rs();addEventListener('resize',rs);
 let rotY=-1.2,k=0;const clk=new THREE.Clock();
 (function loop(){requestAnimationFrame(loop);const dt=clk.getDelta(),t=clk.elapsedTime,wide=innerWidth>820;
-rx+=(cx-rx)*.16;ry+=(cy-ry)*.16;VL.style.setProperty('--px',rx+'px');VL.style.setProperty('--py',ry+'px');cr.style.transform=`translate(${rx}px,${ry}px)`;
+rx+=(cx-rx)*.16;ry+=(cy-ry)*.16;VL.style.setProperty('--px',rx+'px');VL.style.setProperty('--py',ry+'px');AI.style.setProperty('--mx',px);AI.style.setProperty('--my',py);AI.style.setProperty('--sy',sy);cr.style.transform=`translate(${rx}px,${ry}px)`;
 k=Math.min(sy/(innerHeight*.9),1);
 const kc=1-Math.min(k*1.6,1),tx=(wide?2.3:0)*kc,ty=(wide?0:1.6)*kc,sc=(wide?1:.7)*(1-k*.45);
 G.position.x+=(tx-G.position.x)*.06;G.position.y+=(ty-G.position.y)*.06;
